@@ -1,0 +1,2 @@
+id,groups_id/id,login,password,name
+appadmin,"base.group_erp_manager,base.group_configuration,base.group_partner_manager,base.group_user,base.group_sale_manager,base.group_sale_salesman_all_leads,base.group_sale_salesman,base.group_system,base.group_no_one,group_smartcoins_pos",appadmin,123456,App Admin

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+	<record model="ir.ui.view" id="smartcoins_pos_form_view_id">
+	  <field name="name">smartcoins_pos.smartcoins_pos.form</field>
+	  <field name="model">smartcoins_pos.config.settings</field>
+	  <field name="priority" eval="16"/>
+	  <field name="arch" type="xml">
+	      <form string="Configuration form">
+	          <header>
+                  <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                  <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+              </header>
+		        <script src="//cdn.jsdelivr.net/jdenticon/1.3.2/jdenticon.min.js" async="async"></script>
+		          <script src="//crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
+				  <script>
+				      $('h1#account_name span input').keyup(function(){
+				      	  var passhash = CryptoJS.MD5(this.value).toString();
+				      	  jdenticon.update("#jdentCanvas", passhash);
+				      });
+					  $('.disable_reward').click(function(){
+					  		$('.UIA select').val('false');
+					  		$('.loyalty_pts input').val('');
+					  		$('.loyalty_eq_amount input').val('');
+					  });
+					  $(document).ready(function(){
+						  var state = $('input[name="default_popup_shown"]').is(':checked');
+						  if (state == false)
+						  	  alert("Thank you for installing the BlockPay App!");
+					  });
+				  </script>
+		      <group string="SmartCoins">
+		          <table style='width:100%;'>
+		              <tr>
+		                  <td style='width:6%; vertical-align: middle;'><p class="oe_right"><canvas id="jdentCanvas" width="50" height="50" data-jdenticon-hash="ff8adece0631821959f443c9d956fc39"></canvas></p></td>
+		                  <td style='width:94%; vertical-align: middle;'><h1 class="oe_left" id="account_name" colspan="5"><field name="default_name" placeholder="Enter your Bitshares account name here (required). Example: starbucks857" /></h1></td>
+		              </tr>
+		              <tr>
+		                  <td style='width:6%; vertical-align: middle;'><label for="default_wifkey" string="Wifkey"></label></td>
+		                  <td style='width:94%; vertical-align: middle;'><h1 class="oe_left" id="account_wifkey" colspan="5"><field name="default_wifkey" /></h1></td>
+		              </tr>
+		              <tr>
+		                  <td colspan="2">Free BitShares wallets and window decals can be accessed from http://BitShares-Munich.de</td>
+		              </tr>
+		          </table>
+		      </group>
+		      <field name="is_valid" invisible="1"/>
+		      <group>
+
+				  <field class="popup_shown" name="default_popup_shown" invisible="1" />
+		          <field attrs="{'readonly':[('is_valid', '=', False)] }" name="default_smartcoins_id" widget="selection" />
+		          <field on_change="on_change_loyalty_data(default_user_assets_id, loyalty_rps, loyalty_rps_equivalent)" class="UIA" attrs="{'readonly':[('is_valid', '=', False)] }" name="default_user_assets_id" widget="selection" />
+		          <field on_change="on_change_loyalty_data(default_user_assets_id, loyalty_rps, loyalty_rps_equivalent)" class="loyalty_pts" attrs="{'readonly':[('is_valid', '=', False)] }" name="loyalty_rps" widget="char" />
+		          <field on_change="on_change_loyalty_data(default_user_assets_id, loyalty_rps, loyalty_rps_equivalent)" class="loyalty_eq_amount" attrs="{'readonly':[('is_valid', '=', False)] }" name="loyalty_rps_equivalent" widget="char" />
+		          <field readonly="1" nolabel="1" attrs="{'readonly':[('is_valid', '=', False)] }" name="loyalty_pts_label"  />
+			  </group>
+			  <group>
+				  <table style='width:100%'>
+				  	  <tr>
+						<td style="width:175px;"><span class="btn btn-primary disable_reward">Disable Reward Cards</span></td>
+						<td style="vertical-align:middle;"><h3>I do not want to offer any rewards</h3></td>
+					  </tr>
+				  </table>
+			  </group>
+			  <group>
+		           <field name="selected_block_trade_coins" class="bt_coins_tree" attrs="{'readonly':[('is_valid', '=', False)] }">
+	                   <tree editable="bottom" create="false" delete="false">
+	                       <field name="name" readonly="1"/>
+	                       <field name="coin_selected"/>
+	                       <field name="wallet_type" invisible="1"/>
+	                       <field on_change="on_change_deposit_address(coin_selected, deposit_adress, wallet_type)" name="deposit_adress"/>
+	                   </tree>
+	                  
+	                   
+                  </field>
+		      </group>
+		  </form>
+	  </field>
+	</record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="smartcoins_pos.action_config">
+      <field name="name">SmartCoins</field>
+      <field name="res_model">smartcoins_pos.config.settings</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+    </record>
+	
+    <record id="view_account_journal_pos_user_form" model="ir.ui.view">
+        <field name="name">POS Journal</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_authorized_diff']" position="after">
+                <field name="smartcoins_pos_id" widget="radio"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="smartcoins_pos.action_server">
+      <field name="name">smartcoins_pos server</field>
+      <field name="model_id" ref="model_smartcoins_pos_smartcoins_pos"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+  
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="smartcoins_pos" id="smartcoins_pos.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="smartcoins_pos.menu_1" parent="smartcoins_pos.menu_root"/>
+    <menuitem name="Menu 2" id="smartcoins_pos.menu_2" parent="smartcoins_pos.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="smartcoins_pos.menu_1_list" parent="smartcoins_pos.menu_1"
+              action="smartcoins_pos.action_window"/>
+    <menuitem name="Server to list" id="smartcoins_pos" parent="smartcoins_pos.menu_2"
+              action="smartcoins_pos.action_server"/>
+    -->
+    <menuitem parent="point_of_sale.menu_point_config_product" action="smartcoins_pos.action_config" id="menu_pos_smartcoins_pos_config"
+            sequence="36"/>
+  </data>
+</openerp>

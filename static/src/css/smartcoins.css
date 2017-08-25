@@ -1,0 +1,110 @@
+.smartcoins_start {
+	background-image: url("../../img/blockpay.png") !important;
+	background-repeat: no-repeat !important;
+	background-size: 13em !important;
+	background-position-y: center !important;
+	background-position-x: center !important;
+	height: 75px;
+}
+.bt_bridge_choices {
+	background-image: url("../../img/bitcoin-logo.png") !important;
+	background-repeat: no-repeat !important;
+	background-size: 4em !important;
+	background-position-y: center !important;
+	background-position-x: 10px !important;
+}
+.paymentmethods .button {
+	border-radius: 8px !important;
+	background-color: #fdfdfd !important;
+	border-color: #c8c8c8 !important;
+	margin-top: 10px !important;
+	border-top-width: 1px !important;
+	min-width: 295px !important;
+}
+.pos .numpad button {
+	background-color: #ffffff !important;
+	border-color: #efefef !important;
+}
+.pos .numpad button:last-child {
+	background-color: #FF0909 !important;
+}
+.pos .numpad button:last-child img{
+	content: url("../../img/backspace_white.png") !important;
+	margin-top: 5px !important;
+}
+.button.js_set_customer, .button.js_invoice, .screen .top-content .button.next, .screen .top-content .button.back   {
+	background-color: #efefef !important;
+	border: none !important;
+}
+.pos .payment-numpad .numpad{
+	border: none !important;
+}
+.payment-screen .payment-buttons .button.js_set_customer .fa{
+	background-color: blue !important;
+    color: white !important;
+}
+.payment-screen .payment-buttons .button.js_invoice .fa{
+	background-color: green !important;
+    color: white !important;
+}
+.screen .top-content .button.next .fa{
+	background-color: white !important;
+    border-radius: 120px !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border: 2px #ddd solid !important;
+    margin-left: 10px !important;
+}
+.screen .top-content .button.back .fa{
+	background-color: white !important;
+    border-radius: 120px !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border: 2px #ddd solid !important;
+    margin-right: 10px !important;
+}
+.screen .top-content .button.next .fa:hover, .screen .top-content .button.back .fa:hover{
+	background-color: #efefef !important;
+}
+.payment-screen .payment-buttons .button.js_set_customer span{
+	margin-left: -5em !important; 
+}
+.payment-screen .payment-buttons .button.js_invoice:last-child {
+	margin-right: 6em !important; 
+}
+.pos .receipt-screen .centered-content .button.print{
+	background-color: green !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+}
+.pos .receipt-screen .centered-content .button.print .fa{
+	margin-right: 10px !important;
+}
+.smt_btn{
+    background-repeat: no-repeat;
+    background-size: 4em;
+    background-position-y: center;
+    margin: 0;
+    padding: 25px 0; 
+    border-bottom: 1px solid #ddd;
+    background-color: #fdfdfd;
+    cursor: pointer;
+}
+.smt_btn:last-child{
+	border-bottom: none;
+}
+.smt_btn:hover{
+	background-color: #f2f2f2;
+}
+.container-smartcoins{
+	border-radius: 3px;
+	overflow-y: auto;
+    max-height: 100%;
+}
+.coin-img{
+    vertical-align: middle;
+    display: inline-table;
+}

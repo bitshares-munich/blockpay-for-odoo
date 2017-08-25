@@ -1,0 +1,19 @@
+<openerp>
+    <data>
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+		<link rel="stylesheet" href="/smartcoins_pos/static/src/css/smartcoins.css" />
+		<link rel="stylesheet" href="/smartcoins_pos/static/src/css/remodal.css" />
+		<link rel="stylesheet" href="/smartcoins_pos/static/src/css/remodal-default-theme.css" />
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/lzma.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/bs58.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/hash_generator.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/qrcode.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/smartcoins_pos.js"></script>
+		<script type="text/javascript" src="/smartcoins_pos/static/src/js/remodal.js"></script>
+                <!-- <link rel="stylesheet" href="/smartcoins_pos/static/src/css/pos_mercury.css" />-->
+            </xpath>
+        </template>
+    </data>
+</openerp>

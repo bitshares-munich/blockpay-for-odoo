@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="PaymentScreen-Paymentmethods" >
+        <t t-jquery=".paymentmethods" t-operation="prepend">
+	    <div class="button smartcoins_start">
+                
+        </div>
+            <!-- <div class="button bt_bridge_choices">
+                Altcoins 
+            </div> -->
+
+            <div class="container-smartcoins" data-remodal-id="modal" role="dialog">
+            </div>
+        </t>
+    </t>
+	<t t-name="SmartCoinsQRScreenWidget">
+        <div class='receipt-screen screen'>
+            <div class='screen-content'>
+                <div class='top-content'>
+					<span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Back
+                    </span>
+                    <h1>Payment via <span class="coin-img"></span> Smartcoins - <span class="smartcoin_name"></span></h1>
+                </div>
+                <div class="centered-content" style="background-color: white;">
+                    <div class="button print">
+                        <i class='fa fa-print'></i> Print QR Code
+                    </div>
+                    <div class="smartcoins-qr-container" style="padding-top: 1em; text-align: center;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    
+	<t t-name="BTSmartCoinsQRScreenWidget">
+        <div class='receipt-screen screen'>
+            <div class='screen-content'>
+                <div class='top-content'>
+					<span class='button back bt_back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Back
+                    </span>
+                    <h1>Payment via <span class="coin-img"></span> <span class="altcoin_name">Altcoins</span> - <span class="bt_smartcoin_name"></span>
+                        <span class="bt_smartcoin_conversion"></span>
+                    </h1>
+                </div>
+                <div class="centered-content" style="background-color: white;">
+                    <div class="button print bt_print">
+                        <i class='fa fa-print'></i> Print QR Code
+                    </div>
+                    <div class="bt_smartcoins-qr-container" style="padding-top: 1em; text-align: center;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    
+		<t t-name="SmartCoinsListScreenWidget">
+        <div class="smartcoinslist-screen screen">
+            <div class="screen-content">
+                <section class="top-content">
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Cancel
+                    </span>
+                </section>
+                <section class="full-content">
+                    <div class='window'>
+                        <section class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                    <table class='smartcoins-list'>
+                                        <thead>
+                                            <tr>
+                                                <th><h1>Altcoins</h1></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class='smartcoins-list-contents'>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+    <t t-name="SmartCoinLine">
+        <tr class='smartcoins-line paymentmethods' t-att-data-id='smartcoin.id'>
+            <td class="button"><t t-esc='smartcoin.display_name' /></td>
+        </tr>
+    </t>
+	
+
+</templates>
